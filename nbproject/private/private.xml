@@ -3,11 +3,26 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/farmer/FarmerState.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/test/domains/puzzle/PuzzleMoverTest.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/test/domains/farmer/FarmerProblemTest.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/arithmetic/ArithmeticProblem.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/puzzle/PuzzleMover.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/puzzle/PuzzleState.java</file>
             <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/arithmetic/ArithmeticConsole.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/dummy/DummyConsole.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/puzzle/PuzzleProblem.java</file>
             <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/arithmetic/ArithmeticMover.java</file>
             <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/test/domains/arithmetic/ArithmeticStateTest.java</file>
-            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/arithmetic/ArithmeticProblem.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/test/domains/farmer/FarmerStateTest.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/puzzle/PuzzleConsole.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/test/domains/puzzle/PuzzleProblemTest.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/test/domains/farmer/FarmerMoverTest.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/farmer/FarmerMover.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/test/domains/puzzle/PuzzleStateTest.java</file>
             <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/arithmetic/ArithmeticState.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/farmer/FarmerConsole.java</file>
+            <file>file:/C:/Users/Tyler/Documents/NetBeansProjects/ProblemSolver/ProblemSolver/src/domains/farmer/FarmerProblem.java</file>
         </group>
     </open-files>
 </project-private>

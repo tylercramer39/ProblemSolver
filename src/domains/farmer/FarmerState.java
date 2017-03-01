@@ -11,4 +11,15 @@ package domains.farmer;
  */
 public class FarmerState {
     
+    public FarmerState(Integer contents) {
+            this.contents = contents;
+        }
+        
+        private final int contents;
+        private static final String NEW_LINE = "\n";
+        
+        public int getContents() {
+        return contents;
+    }
+    
 }
