@@ -18,8 +18,8 @@ import javafx.stage.Stage;
 public class FarmerConsole extends Application{
     
     public void start(Stage primaryStage){
-        Scene scene = new Scene(new ProblemConsole(new FarmerProblem(), 450, 550));
-        primaryStage.setTitle("Hamzas Arithmetic Console");
+        Scene scene = new Scene(new ProblemConsole(new DummyProblem()));
+        primaryStage.setTitle("Farmers Project");
         primaryStage.setScene(scene);
         primaryStage.show();
     }

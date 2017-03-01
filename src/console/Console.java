@@ -21,6 +21,7 @@ public class Console extends VBox {
      * @param height the console height
      */
     public Console(String title, double width, double height) {
+		System.out('hey');
         
         this.title = title;
         display = new TextArea();
