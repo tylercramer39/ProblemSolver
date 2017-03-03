@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 public class FarmerConsole extends Application{
     
     public void start(Stage primaryStage){
-        Scene scene = new Scene(new ProblemConsole(new DummyProblem()));
+        Scene scene = new Scene(new ProblemConsole(new FarmerProblem(), 600.0D, 600.0D));
         primaryStage.setTitle("Farmers Project");
         primaryStage.setScene(scene);
         primaryStage.show();

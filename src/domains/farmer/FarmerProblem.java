@@ -15,13 +15,13 @@ public class FarmerProblem extends Problem {
     
     public FarmerProblem() {
             super();
-            super.setName("Farmer");
+            super.setName("Farmer, Wolf, Goat, and Cabbage");
             super.setIntroduction(INTRO);
             super.setMover(new FarmerMover());
             
-            super.setInitialState(new FarmerState());
+            super.setInitialState(new FarmerState("WEST", "WEST", "WEST", "WEST"));
             super.setCurrentState(super.getInitialState());
-            super.setFinalState(new FarmerState());
+            super.setFinalState(new FarmerState("EAST","EAST","EAST","EAST"));
         }
         private static final String INTRO = 
                 "A farmer and his wolf, goat, and cabbage come to the edge of a river they wish to cross. "
@@ -31,7 +31,4 @@ public class FarmerProblem extends Problem {
                 + "will eat the cabbage. Devise a sequence of crossings of the river so that all four characters "
                 + "arrive safely on the other side.";
 
-}
-
-    
 }
