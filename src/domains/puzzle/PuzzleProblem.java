@@ -17,7 +17,7 @@ import framework.problem.Problem;
 
             super.setName("8-Puzzle");
             super.setIntroduction(INTRO);
-            super.setMover(new PuzzleMover(3,3));
+            super.setMover(new PuzzleMover());
             
             super.setInitialState(Start);
             super.setCurrentState(Start);

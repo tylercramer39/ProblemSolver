@@ -13,42 +13,37 @@ import framework.problem.State;
  */
 public class FarmerState implements State {
     
-        private final pos farmer;
-        private final pos wolf;
-        private final pos goat;
-        private final pos cabbage;
-  
-        public static enum pos {
-          West,  East;
+        private final Pos FARMER_POS;
+        private final Pos WOLF_POS;
+        private final Pos GOAT_POS;
+        private final Pos CABBAGE_POS;
+       
 
-          private pos() {}
-        }
-
-        public FarmerState(pos farmer, pos wolf, pos goat, pos cabbage) {
-          this.farmer = farmer;
-          this.wolf = wolf;
-          this.goat = goat;
-          this.cabbage = cabbage;
+        public FarmerState(Pos farmer, Pos wolf, Pos goat, Pos cabbage) {
+          this.FARMER_POS = farmer;
+          this.WOLF_POS = wolf;
+          this.GOAT_POS = goat;
+          this.CABBAGE_POS = cabbage;
         }
 
         public FarmerState(String farmer, String wolf, String goat, String cabbage) {
           this(toPos(farmer), toPos(wolf), toPos(goat), toPos(cabbage));
         }
 
-        public pos getFarmer() {
-          return this.farmer;
+        public Pos getFarmer() {
+          return this.FARMER_POS;
         }
 
-        public pos getWolf() {
-          return this.wolf;
+        public Pos getWolf() {
+          return this.WOLF_POS;
         }
 
-        public pos getGoat() {
-          return this.goat;
+        public Pos getGoat() {
+          return this.GOAT_POS;
         }
 
-        public pos getCabbage() {
-          return this.cabbage;
+        public Pos getCabbage() {
+          return this.CABBAGE_POS;
         }
 
         public boolean equals(Object other) {
@@ -62,7 +57,10 @@ public class FarmerState implements State {
             return false;
           }
           FarmerState state = (FarmerState)other;
-          return (this.farmer == state.farmer) && (this.wolf == state.wolf) && (this.goat == state.goat) && (this.cabbage == state.cabbage);
+          return (this.FARMER_POS == state.FARMER_POS) && 
+                  (this.WOLF_POS == state.WOLF_POS) && 
+                  (this.GOAT_POS == state.GOAT_POS) && 
+                  (this.CABBAGE_POS == state.CABBAGE_POS);
         }
 
         public String toString() {
@@ -81,25 +79,30 @@ public class FarmerState implements State {
 
           buf.append(start);
 
-          buf.append(this.farmer == pos.West ? fWest : fEast);
-          buf.append(this.wolf == pos.West ? wWest : wEast);
-          buf.append(this.goat == pos.West ? gWest : gEast);
-          buf.append(this.cabbage == pos.West ? cWest : cEast);
+          buf.append(this.FARMER_POS == Pos.WEST ? fWest : fEast);
+          buf.append(this.WOLF_POS == Pos.WEST ? wWest : wEast);
+          buf.append(this.GOAT_POS == Pos.WEST ? gWest : gEast);
+          buf.append(this.CABBAGE_POS == Pos.WEST ? cWest : cEast);
 
           buf.append(end);
    
           return buf.toString();
         }
 
-        private static pos toPos(String s) {
+        private static Pos toPos(String s) {
           if (s.equalsIgnoreCase("west")) {
-            return pos.West;
+            return Pos.WEST;
           }
           if (s.equalsIgnoreCase("east")) {
-            return pos.East;
+            return Pos.EAST;
           }
           throw new RuntimeException("Bad side: " + s);
         }
       
 
 }
+
+enum Pos {
+    WEST,  EAST;
+}
+
