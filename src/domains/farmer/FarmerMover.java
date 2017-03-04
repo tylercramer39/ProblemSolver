@@ -7,6 +7,8 @@ package domains.farmer;
 
 import framework.problem.Mover;
 import framework.problem.State;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -14,40 +16,72 @@ import framework.problem.State;
  */
 public class FarmerMover extends Mover {
     
+    public static final String FARMER = "Farmer goes alone";
+    public static final String WOLF = "Farmer brings wolf";
+    public static final String GOAT = "Farmer brings goat";
+    public static final String CABBAGE = "Farmer brings cabbage";
+    
     public FarmerMover() {
-            super.addMove(farmer, s -> tryFarmer(s));
-            super.addMove(wolf, s -> tryWolf(s));
-            super.addMove(goat, s -> tryGoat(s));
-            super.addMove(cabbage, s -> tryCabbage(s));
-            
+            super.addMove(FARMER, s -> tryFarmer((FarmerState)s));
+            super.addMove(WOLF, s -> tryWolf((FarmerState)s));
+            super.addMove(GOAT, s -> tryGoat((FarmerState)s));
+            super.addMove(CABBAGE, s -> tryCabbage((FarmerState)s));
+    }
+    
+    private static final List<FarmerState> INVALID_STATES = Arrays.asList(
+        new FarmerState( Pos.EAST, Pos.WEST, Pos.WEST, Pos.WEST ),
+        new FarmerState( Pos.EAST, Pos.WEST, Pos.WEST, Pos.EAST ),
+        new FarmerState( Pos.EAST, Pos.EAST, Pos.WEST, Pos.WEST ),
+        new FarmerState( Pos.WEST, Pos.EAST, Pos.EAST, Pos.WEST ),
+        new FarmerState( Pos.WEST, Pos.WEST, Pos.EAST, Pos.EAST ),
+        new FarmerState( Pos.WEST, Pos.EAST, Pos.EAST, Pos.EAST )
+    );
+    
+    private State validateState( FarmerState state ) {
+        if ( INVALID_STATES.stream().anyMatch( invalidSate -> invalidSate.equals( state ) ) ) {
+            return null;
+        }
+        return state;
     }
         
-    private State tryFarmer(State s) {
-        FarmerState thing =(FarmerState)s;
-        thing = new FarmerState("East", "West", "West", "West");
-        return thing;
+    private State tryFarmer(FarmerState currentState) {
+        FarmerState newState = new FarmerState(
+                currentState.getFarmer() == Pos.EAST ? Pos.WEST : Pos.EAST,
+                currentState.getWolf(),
+                currentState.getGoat(),
+                currentState.getCabbage()
+        );
+        return validateState( newState );
     }
     
-    private State tryWolf(State s) {
-        FarmerState thing =(FarmerState)s;
-        thing = new FarmerState("West","East", "West", "West");
-        return thing;
+    private State tryWolf(FarmerState currentState) {
+        FarmerState newState = new FarmerState(
+                currentState.getFarmer() == Pos.EAST ? Pos.WEST : Pos.EAST,
+                currentState.getWolf() == Pos.EAST ? Pos.WEST : Pos.EAST,
+                currentState.getGoat(),
+                currentState.getCabbage()
+        );
+        return validateState( newState );
     }
     
-    private State tryGoat(State s) {
-        FarmerState thing =(FarmerState)s;
-        thing = new FarmerState("West","West","East","West");
-        return thing;
+    private State tryGoat(FarmerState currentState) {
+        FarmerState newState = new FarmerState(
+                currentState.getFarmer() == Pos.EAST ? Pos.WEST : Pos.EAST,
+                currentState.getWolf(),
+                currentState.getGoat() == Pos.EAST ? Pos.WEST : Pos.EAST,
+                currentState.getCabbage()
+        );
+        return validateState( newState );
     }
 
-    private State tryCabbage(State s) {
-        FarmerState thing =(FarmerState)s;
-        thing = new FarmerState("West","West","West","East");
-        return thing;
+    private State tryCabbage(FarmerState currentState) {
+        FarmerState newState = new FarmerState(
+                currentState.getFarmer() == Pos.EAST ? Pos.WEST : Pos.EAST,
+                currentState.getWolf(),
+                currentState.getGoat(),
+                currentState.getCabbage() == Pos.EAST ? Pos.WEST : Pos.EAST
+        );
+        return validateState( newState );
     }
-        public static final String farmer = "Farmer goes alone";
-        public static final String wolf = "Farmer brings wolf";
-        public static final String goat = "Farmer brings goat";
-        public static final String cabbage = "Farmer brings cabbage";
-    
+            
 }

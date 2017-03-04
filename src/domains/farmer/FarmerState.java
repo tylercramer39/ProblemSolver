@@ -7,24 +7,22 @@ package domains.farmer;
 
 import framework.problem.State;
 
+enum Pos {
+    WEST,  EAST;
+}
+
 /**
  *
  * @author Tyler
  */
 public class FarmerState implements State {
     
-        private final pos farmer;
-        private final pos wolf;
-        private final pos goat;
-        private final pos cabbage;
+        private final Pos farmer;
+        private final Pos wolf;
+        private final Pos goat;
+        private final Pos cabbage;
   
-        public static enum pos {
-          West,  East;
-
-          private pos() {}
-        }
-
-        public FarmerState(pos farmer, pos wolf, pos goat, pos cabbage) {
+        public FarmerState(Pos farmer, Pos wolf, Pos goat, Pos cabbage) {
           this.farmer = farmer;
           this.wolf = wolf;
           this.goat = goat;
@@ -35,19 +33,19 @@ public class FarmerState implements State {
           this(toPos(farmer), toPos(wolf), toPos(goat), toPos(cabbage));
         }
 
-        public pos getFarmer() {
+        public Pos getFarmer() {
           return this.farmer;
         }
 
-        public pos getWolf() {
+        public Pos getWolf() {
           return this.wolf;
         }
 
-        public pos getGoat() {
+        public Pos getGoat() {
           return this.goat;
         }
 
-        public pos getCabbage() {
+        public Pos getCabbage() {
           return this.cabbage;
         }
 
@@ -81,22 +79,22 @@ public class FarmerState implements State {
 
           buf.append(start);
 
-          buf.append(this.farmer == pos.West ? fWest : fEast);
-          buf.append(this.wolf == pos.West ? wWest : wEast);
-          buf.append(this.goat == pos.West ? gWest : gEast);
-          buf.append(this.cabbage == pos.West ? cWest : cEast);
+          buf.append(this.farmer == Pos.WEST ? fWest : fEast);
+          buf.append(this.wolf == Pos.WEST ? wWest : wEast);
+          buf.append(this.goat == Pos.WEST ? gWest : gEast);
+          buf.append(this.cabbage == Pos.WEST ? cWest : cEast);
 
           buf.append(end);
    
           return buf.toString();
         }
 
-        private static pos toPos(String s) {
+        private static Pos toPos(String s) {
           if (s.equalsIgnoreCase("west")) {
-            return pos.West;
+            return Pos.WEST;
           }
           if (s.equalsIgnoreCase("east")) {
-            return pos.East;
+            return Pos.EAST;
           }
           throw new RuntimeException("Bad side: " + s);
         }
