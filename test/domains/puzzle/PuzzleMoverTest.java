@@ -7,8 +7,9 @@ package domains.puzzle;
 
 import framework.problem.Mover;
 import framework.problem.State;
-import org.junit.Test;
+import java.util.List;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
@@ -27,9 +28,21 @@ public class PuzzleMoverTest {
     
     public PuzzleMoverTest() {
         
-        /**
-         * Initialize instance fields here
-         */
+        start = new PuzzleState (
+                new int[][]{new int[]{1, 2, 3}, 
+                            new int[]{8, 6, 4}, 
+                            new int[]{7, 0, 5}});  
+        mover = new PuzzleMover();
+        
+        moveNames = mover.getMoveNames();
+        slide1 = moveNames.get(0);
+        slide2 = moveNames.get(1);
+        slide3 = moveNames.get(2);
+        slide4 = moveNames.get(3);
+        slide5 = moveNames.get(4);
+        slide6 = moveNames.get(5); 
+        slide7 = moveNames.get(6);
+        slide8 = moveNames.get(7);
         
     }
     
@@ -47,42 +60,89 @@ public class PuzzleMoverTest {
          *
          * and test the result with assertions.
          */
-        fail("The test case has not been implemented.");
+        PuzzleState start1= new PuzzleState( new int[][]{new int[]{1, 2, 3}, 
+                            new int[]{0, 8, 4}, 
+                            new int[]{7, 5, 6}});
+  State next = mover.doMove(slide1, start1);
+ assertTrue(next.equals(new PuzzleState( new int[][]{new int[]{0, 2, 3}, 
+                            new int[]{1, 8, 4}, 
+                            new int[]{7, 5, 6}})));  
     }
 
-    @Test
-    public void testSlide2() {
-        fail("The test case has not been implemented.");        
+@Test
+    public void testSlide2(){
+        PuzzleState start1= new PuzzleState( new int[][]{new int[]{1, 2, 3}, 
+                            new int[]{8, 0, 4}, 
+                            new int[]{7, 5, 6}});
+  State next = mover.doMove(slide2, start1);
+ assertTrue(next.equals(new PuzzleState( new int[][]{new int[]{1, 0, 3}, 
+                            new int[]{8, 2, 4}, 
+                            new int[]{7, 5, 6}}))); 
     }
 
     @Test
     public void testSlide3() {
-        fail("The test case has not been implemented.");        
+   PuzzleState start1= new PuzzleState( new int[][]{new int[]{1, 2, 3}, 
+                            new int[]{8, 4, 0}, 
+                            new int[]{7, 5, 6}});
+  State next = mover.doMove(slide3, start1);
+ assertTrue(next.equals(new PuzzleState( new int[][]{new int[]{1, 2, 0}, 
+                            new int[]{8, 4, 3}, 
+                            new int[]{7, 5, 6}}))); 
     }
 
     @Test
     public void testSlide4() {
-        fail("The test case has not been implemented.");        
+   PuzzleState start1= new PuzzleState( new int[][]{new int[]{1, 2, 3}, 
+                            new int[]{8, 0, 4}, 
+                            new int[]{7, 5, 6}});
+  State next = mover.doMove(slide4, start1);
+ assertTrue(next.equals(new PuzzleState( new int[][]{new int[]{1, 2, 3}, 
+                            new int[]{8, 4, 0}, 
+                            new int[]{7, 5, 6}}))); 
     }
 
     @Test
     public void testSlide5() {
-        fail("The test case has not been implemented.");        
+    State next = mover.doMove(slide5, start);
+
+
+assertTrue(next.equals(new PuzzleState( new int[][]{new int[]{1, 2, 3}, 
+                            new int[]{8, 6, 4}, 
+                            new int[]{7, 5, 0}})));        
     }
 
     @Test
     public void testSlide6() {
-        fail("The test case has not been implemented.");        
+       State next = mover.doMove(slide6, start);
+ assertTrue(next.equals(new PuzzleState( new int[][]{new int[]{1, 2, 3}, 
+                            new int[]{8, 0, 4}, 
+                            new int[]{7, 6, 5}}))); 
     }
 
     @Test
     public void testSlide7() {
-        fail("The test case has not been implemented.");        
+             State next = mover.doMove(slide7, start);
+ assertTrue(next.equals(new PuzzleState( new int[][]{new int[]{1, 2, 3}, 
+                            new int[]{8, 6, 4}, 
+                            new int[]{0, 7, 5}}))); 
     }
 
     @Test
     public void testSlide8() {
-        fail("The test case has not been implemented.");        
+   PuzzleState start1= new PuzzleState( new int[][]{new int[]{1, 2, 3}, 
+                            new int[]{8, 0, 4}, 
+                            new int[]{7, 5, 6}});
+  State next = mover.doMove(slide8, start1);
+ assertTrue(next.equals(new PuzzleState( new int[][]{new int[]{1, 2, 3}, 
+                            new int[]{0, 8, 4}, 
+                            new int[]{7, 5, 6}}))); 
     }
     
+   
+    private final List<String> moveNames;
+    
+    private State next;
+    
+    private enum Message {EXCEPTION_OCCURRED, NO_EXCEPTION_OCCURRED};
 }

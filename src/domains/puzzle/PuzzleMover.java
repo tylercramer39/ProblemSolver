@@ -6,50 +6,293 @@
 package domains.puzzle;
 
 import framework.problem.Mover;
-import framework.problem.State;
-
 /**
  *
  * @author Tyler
  */
 public class PuzzleMover extends Mover {
-    
+
+    public static final String slide1 = "SLIDE TILE 1";
+    public static final String slide2 = "SLIDE TILE 2";
+    public static final String slide3 = "SLIDE TILE 3";
+    public static final String slide4 = "SILDE TILE 4";
+    public static final String slide5 = "SLIDE TILE 5";
+    public static final String slide6 = "SLIDE TILE 6";
+    public static final String slide7 = "SLIDE TILE 7";
+    public static final String slide8 = "SLIDE TILE 8";
+
     public PuzzleMover() {
-            super.addMove(farmer, s -> tryFarmer(s));
-            super.addMove(wolf, s -> tryWolf(s));
-            super.addMove(goat, s -> tryGoat(s));
-            super.addMove(cabbage, s -> tryCabbage(s));
-            
-    }
-        
-    private State tryFarmer(State s) {
-        
-        PuzzleState thing =(PuzzleState)s;
-        thing = new PuzzleState();
-        return thing;
-    }
-    
-    private State tryWolf(State s) {
-        FarmerState thing =(FarmerState)s;
-        thing = new FarmerState("West","East", "West", "West");
-        return thing;
-    }
-    
-    private State tryGoat(State s) {
-        FarmerState thing =(FarmerState)s;
-        thing = new FarmerState("West","West","East","West");
-        return thing;
+        super.addMove(slide1, s -> trySlide1((PuzzleState) s));
+        super.addMove(slide2, s -> trySlide2((PuzzleState) s));
+        super.addMove(slide3, s -> trySlide3((PuzzleState) s));
+        super.addMove(slide4, s -> trySlide4((PuzzleState) s));
+        super.addMove(slide5, s -> trySlide5((PuzzleState) s));
+        super.addMove(slide6, s -> trySlide6((PuzzleState) s));
+        super.addMove(slide7, s -> trySlide7((PuzzleState) s));
+        super.addMove(slide8, s -> trySlide8((PuzzleState) s));
     }
 
-    private State tryCabbage(State s) {
-        FarmerState thing =(FarmerState)s;
-        thing = new FarmerState("West","West","West","East");
-        return thing;
+    private PuzzleState trySlide1(PuzzleState state) {
+
+        PuzzleState.Location tiles = state.getLocation(1);
+        PuzzleState.Location blank = state.getLocation(0);
+    if((tiles.getRow() >= 0 && tiles.getRow() <= 3) && (tiles.getColumn() >= 0 && tiles.getColumn() <= 3 )
+    && (blank.getRow() >= 0 && blank.getRow() <= 3) && (blank.getColumn() >= 0 && blank.getColumn() <= 3 ) ){
+        if ((tiles.getRow() + 1 == blank.getRow() ) && tiles.getColumn() == blank.getColumn()) {
+            PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() + 1, tiles.getColumn());
+            return new PuzzleState(state, tiles, location);
+        }
+        else if(tiles.getRow()-1 == blank.getRow() && tiles.getColumn()==blank.getColumn()){
+            PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() -1, tiles.getColumn());
+            return new PuzzleState(state, tiles, location);
+        } 
+        else if (tiles.getColumn() + 1 == blank.getColumn() && tiles.getRow() == blank.getRow()) {
+            PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn() + 1);
+            return new PuzzleState(state, tiles, location);
+        }
+        else if(tiles.getColumn()-1 == blank.getColumn() && tiles.getRow() == blank.getRow()){
+            PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn()-1);
+            return new PuzzleState(state, tiles, location);
+        } 
+        else {
+            return null;
+        }
+       
     }
-        public static final String farmer = "Farmer goes alone";
-        public static final String wolf = "Farmer brings wolf";
-        public static final String goat = "Farmer brings goat";
-        public static final String cabbage = "Farmer brings cabbage";
+    else {
+        return null;
+    }
+}
     
-    
+
+    private PuzzleState trySlide2(PuzzleState state) {
+
+        PuzzleState.Location tiles = state.getLocation(2);
+        PuzzleState.Location blank = state.getLocation(0);
+
+        if((tiles.getRow() >= 0 && tiles.getRow() <= 3) && (tiles.getColumn() >= 0 && tiles.getColumn() <= 3 )
+        && (blank.getRow() >= 0 && blank.getRow() <= 3) && (blank.getColumn() >= 0 && blank.getColumn() <= 3 ) ){
+            if ((tiles.getRow() + 1 == blank.getRow()) && (tiles.getColumn() == blank.getColumn())) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() + 1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            }
+            else if(tiles.getRow()-1 == blank.getRow() && tiles.getColumn()==blank.getColumn()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() -1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if (tiles.getColumn() + 1 == blank.getColumn() && tiles.getRow() == blank.getRow()) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn() + 1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if(tiles.getColumn()-1 == blank.getColumn() && tiles.getRow() == blank.getRow()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn()-1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else {
+                return null;
+            }
+       
+        }
+        else {
+            return null;
+        }
+    }
+
+    private PuzzleState trySlide3(PuzzleState state) {
+
+        PuzzleState.Location tiles = state.getLocation(3);
+        PuzzleState.Location blank = state.getLocation(0);
+
+        if((tiles.getRow() >= 0 && tiles.getRow() <= 3) && (tiles.getColumn() >= 0 && tiles.getColumn() <= 3 )
+        && (blank.getRow() >= 0 && blank.getRow() <= 3) && (blank.getColumn() >= 0 && blank.getColumn() <= 3 ) ){
+            if ((tiles.getRow() + 1 == blank.getRow()) && (tiles.getColumn() == blank.getColumn())) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() + 1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            }
+            else if(tiles.getRow()-1 == blank.getRow() && tiles.getColumn()==blank.getColumn()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() -1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            }    
+            else if (tiles.getColumn() + 1 == blank.getColumn() && tiles.getRow() == blank.getRow()) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn() + 1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if(tiles.getColumn()-1 == blank.getColumn() && tiles.getRow() == blank.getRow()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn()-1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else {
+                return null;
+            }
+       
+        }
+        else {
+            return null;
+        }
+    }
+
+    private PuzzleState trySlide4(PuzzleState state) {
+
+        PuzzleState.Location tiles = state.getLocation(4);
+        PuzzleState.Location blank = state.getLocation(0);
+
+        if((tiles.getRow() >= 0 && tiles.getRow() <= 3) && (tiles.getColumn() >= 0 && tiles.getColumn() <= 3 )
+        && (blank.getRow() >= 0 && blank.getRow() <= 3) && (blank.getColumn() >= 0 && blank.getColumn() <= 3 ) ){
+            if ((tiles.getRow() + 1 == blank.getRow()) && (tiles.getColumn() == blank.getColumn())) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() + 1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            }
+            else if(tiles.getRow()-1 == blank.getRow() && tiles.getColumn()==blank.getColumn()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() -1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if (tiles.getColumn() + 1 == blank.getColumn() && tiles.getRow() == blank.getRow()) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn() + 1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if(tiles.getColumn()-1 == blank.getColumn() && tiles.getRow() == blank.getRow()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn()-1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else {
+                return null;
+            }
+       
+        }
+        else {
+            return null;
+        }
+    }
+
+    private PuzzleState trySlide5(PuzzleState state) {
+
+        PuzzleState.Location tiles = state.getLocation(5);
+        PuzzleState.Location blank = state.getLocation(0);
+
+        if((tiles.getRow() >= 0 && tiles.getRow() <= 3) && (tiles.getColumn() >= 0 && tiles.getColumn() <= 3 )
+        && (blank.getRow() >= 0 && blank.getRow() <= 3) && (blank.getColumn() >= 0 && blank.getColumn() <= 3 ) ){
+            if ((tiles.getRow() + 1 == blank.getRow() ) && tiles.getColumn() == blank.getColumn()) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() + 1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            }
+            else if(tiles.getRow()-1 == blank.getRow() && tiles.getColumn()==blank.getColumn()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() -1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if (tiles.getColumn() + 1 == blank.getColumn() && tiles.getRow() == blank.getRow()) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn() + 1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if(tiles.getColumn()-1 == blank.getColumn() && tiles.getRow() == blank.getRow()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn()-1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else {
+                return null;
+            }
+       
+        }
+        else {
+            return null;
+        }
+    }
+
+    private PuzzleState trySlide6(PuzzleState state) {
+
+        PuzzleState.Location tiles = state.getLocation(6);
+        PuzzleState.Location blank = state.getLocation(0);
+       
+        if((tiles.getRow() >= 0 && tiles.getRow() <= 3) && (tiles.getColumn() >= 0 && tiles.getColumn() <= 3 )
+        && (blank.getRow() >= 0 && blank.getRow() <= 3) && (blank.getColumn() >= 0 && blank.getColumn() <= 3 ) ){
+            if ((tiles.getRow() + 1 == blank.getRow()) && (tiles.getColumn() == blank.getColumn())) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() + 1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            }
+            else if(tiles.getRow()-1 == blank.getRow() && tiles.getColumn()==blank.getColumn()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() -1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if (tiles.getColumn() + 1 == blank.getColumn() && tiles.getRow() == blank.getRow()) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn() + 1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if(tiles.getColumn()-1 == blank.getColumn() && tiles.getRow() == blank.getRow()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn()-1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else {
+                return null;
+            }
+       
+        }
+        else {
+            return null;
+        }
+    }
+
+    private PuzzleState trySlide7(PuzzleState state) {
+
+        PuzzleState.Location tiles = state.getLocation(7);
+        PuzzleState.Location blank = state.getLocation(0);
+
+        if((tiles.getRow() >= 0 && tiles.getRow() <= 3) && (tiles.getColumn() >= 0 && tiles.getColumn() <= 3 )
+        && (blank.getRow() >= 0 && blank.getRow() <= 3) && (blank.getColumn() >= 0 && blank.getColumn() <= 3 ) ){
+            if ((tiles.getRow() + 1 == blank.getRow()) && (tiles.getColumn() == blank.getColumn())) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() + 1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            }
+            else if(tiles.getRow()-1 == blank.getRow() && tiles.getColumn()==blank.getColumn()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() -1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if (tiles.getColumn() + 1 == blank.getColumn() && tiles.getRow() == blank.getRow()) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn() + 1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if(tiles.getColumn()-1 == blank.getColumn() && tiles.getRow() == blank.getRow()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn()-1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else {
+                return null;
+            }
+       
+        }
+        else {
+            return null;
+        }
+    }
+
+    private PuzzleState trySlide8(PuzzleState state) {
+
+        PuzzleState.Location tiles = state.getLocation(8);
+        PuzzleState.Location blank = state.getLocation(0);
+
+        if((tiles.getRow() >= 0 && tiles.getRow() <= 3) && (tiles.getColumn() >= 0 && tiles.getColumn() <= 3 )
+        && (blank.getRow() >= 0 && blank.getRow() <= 3) && (blank.getColumn() >= 0 && blank.getColumn() <= 3 ) ){
+            if ((tiles.getRow() + 1 == blank.getRow()) && (tiles.getColumn() == blank.getColumn())) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() + 1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            }
+            else if(tiles.getRow()-1 == blank.getRow() && tiles.getColumn()==blank.getColumn()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow() -1, tiles.getColumn());
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if (tiles.getColumn() + 1 == blank.getColumn() && tiles.getRow() == blank.getRow()) {
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn() + 1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else if(tiles.getColumn()-1 == blank.getColumn() && tiles.getRow() == blank.getRow()){
+                PuzzleState.Location location = new PuzzleState.Location(tiles.getRow(), tiles.getColumn()-1);
+                return new PuzzleState(state, tiles, location);
+            } 
+            else {
+                return null;
+            }
+       
+        }
+        else {
+            return null;
+        }
+    }
 }

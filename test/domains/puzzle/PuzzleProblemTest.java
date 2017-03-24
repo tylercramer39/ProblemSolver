@@ -7,8 +7,10 @@ package domains.puzzle;
 
 import framework.problem.Mover;
 import framework.problem.Problem;
-import org.junit.Test;
+import framework.problem.State;
+import java.util.List;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
@@ -19,7 +21,7 @@ public class PuzzleProblemTest {
     /**
      * Declare private instance fields here. For example:
      */
-    
+    private final List<String> moveNames;
     private final Problem problem;
     private final Mover mover;
     private final String slide1, slide2, slide3, slide4,   // move names
@@ -27,9 +29,18 @@ public class PuzzleProblemTest {
     
     public PuzzleProblemTest() {
 
-        /**
-         * Initialize instance fields here
-         */
+        problem = new PuzzleProblem();
+        mover = new PuzzleMover();
+        
+        moveNames = mover.getMoveNames();
+        slide1 = moveNames.get(0);
+        slide2 = moveNames.get(1); 
+        slide3 = moveNames.get(2);
+        slide4 = moveNames.get(3);
+        slide5 = moveNames.get(4);
+        slide6 = moveNames.get(5);
+        slide7 = moveNames.get(6);
+        slide8 = moveNames.get(7);
 
     }
 
@@ -42,7 +53,35 @@ public class PuzzleProblemTest {
 	 * assertions along the way.
 	 * Use FarmerProblemTest as a model.
 	 */
-        fail("The test case has not been implemented.");        
+        display("Welcome to the " + problem.getName() + " problem");
+        display(problem.getIntroduction());
+        display(problem.getCurrentState());
+        
+        assertFalse(problem.success());
+        
+        tryMove(slide6);
+        assertFalse(problem.success());
+        
+        tryMove(slide8);
+        assertFalse(problem.success());
+        
+        tryMove(slide2);
+        assertFalse(problem.success());
+        
+      tryMove(slide1);
+       assertFalse(problem.success());
+       
+       tryMove(slide8);
+        assertTrue(problem.success());
+      
     }
-    
+     private void display(Object o) {
+        System.out.println(o + "\n");
+    }
+     private void tryMove(String move) {
+         State next = mover.doMove(move, problem.getCurrentState());
+       assertTrue(next != null);
+        problem.setCurrentState(next);
+        display(problem.getCurrentState());
+    }    
 }
